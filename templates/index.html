@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تبدیل متن به گفتار</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        .voice-container {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .audio-history {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .audio-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .audio-controls {
+            margin-right: 10px;
+        }
+        .audio-text {
+            flex-grow: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        #loader {
+            display: none;
+        }
+        .language-filter {
+            margin-bottom: 10px;
+        }
+        #statusMessage {
+            display: none;
+            margin-top: 10px;
+        }
+        #debugInfo {
+            font-family: monospace;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container main-container">
+        <h1 class="text-center mb-4">تبدیل متن به گفتار</h1>
+        
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="mb-3">
+                    <label for="textInput" class="form-label">متن مورد نظر:</label>
+                    <textarea id="textInput" class="form-control" rows="5" placeholder="متن خود را اینجا وارد کنید..."></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">صدا:</label>
+                    <div class="input-group">
+                        <input type="text" id="voiceSearch" class="form-control" placeholder="جستجوی صدا...">
+                        <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#voiceCollapse">
+                            <i class="bi bi-list"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="collapse" id="voiceCollapse">
+                    <div class="card card-body">
+                        <div class="language-filter">
+                            <select id="languageFilter" class="form-select">
+                                <option value="all">همه زبان‌ها</option>
+                                <option value="fa-IR" selected>فارسی</option>
+                                <option value="en-US">انگلیسی (آمریکایی)</option>
+                                <option value="en-GB">انگلیسی (بریتانیایی)</option>
+                                <option value="ar">عربی</option>
+                                <option value="fr-FR">فرانسوی</option>
+                                <option value="de-DE">آلمانی</option>
+                                <option value="es-ES">اسپانیایی</option>
+                                <option value="ru-RU">روسی</option>
+                                <option value="zh-CN">چینی</option>
+                                <option value="ja-JP">ژاپنی</option>
+                            </select>
+                        </div>
+                        <div id="loader" class="text-center">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">در حال بارگذاری...</span>
+                            </div>
+                        </div>
+                        <div id="voiceList" class="voice-container">
+                            <!-- Voice options will be added here dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="rateInput" class="form-label">سرعت:</label>
+                    <input type="range" class="form-range" id="rateInput" min="1" max="50" value="25">
+                    <div class="d-flex justify-content-between">
+                        <small>کمترین</small>
+                        <small id="rateValue">25%</small>
+                        <small>بیشترین</small>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="pitchInput" class="form-label">زیر و بمی صدا:</label>
+                    <input type="range" class="form-range" id="pitchInput" min="1" max="50" value="25">
+                    <div class="d-flex justify-content-between">
+                        <small>کمترین</small>
+                        <small id="pitchValue">25Hz</small>
+                        <small>بیشترین</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="d-grid gap-2">
+                    <button id="convertBtn" class="btn btn-primary btn-lg">
+                        <i class="bi bi-soundwave"></i> تبدیل به گفتار
+                    </button>
+                    <div id="statusMessage" class="alert alert-info mt-2">
+                        در حال پردازش...
+                    </div>
+                    <div id="debugInfo"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <h3>گفتارهای ایجاد شده:</h3>
+                <div id="audioHistory" class="audio-history">
+                    <!-- Audio items will be added here dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elements
+            const textInput = document.getElementById('textInput');
+            const voiceSearch = document.getElementById('voiceSearch');
+            const voiceList = document.getElementById('voiceList');
+            const rateInput = document.getElementById('rateInput');
+            const rateValue = document.getElementById('rateValue');
+            const pitchInput = document.getElementById('pitchInput');
+            const pitchValue = document.getElementById('pitchValue');
+            const convertBtn = document.getElementById('convertBtn');
+            const audioHistory = document.getElementById('audioHistory');
+            const loader = document.getElementById('loader');
+            const languageFilter = document.getElementById('languageFilter');
+            const statusMessage = document.getElementById('statusMessage');
+            const debugInfo = document.getElementById('debugInfo');
+            
+            // Variables
+            let allVoices = [];
+            let selectedVoice = 'fa-IR-DilaraNeural';
+            
+            // Load available voices
+            loadVoices();
+            
+            // Event Listeners
+            voiceSearch.addEventListener('input', filterVoices);
+            languageFilter.addEventListener('change', filterVoices);
+            rateInput.addEventListener('input', updateRateValue);
+            pitchInput.addEventListener('input', updatePitchValue);
+            convertBtn.addEventListener('click', convertTextToSpeech);
+            
+            // Initial display
+            updateRateValue();
+            updatePitchValue();
+            
+            // Functions
+            function showStatus(message, type = 'info') {
+                statusMessage.className = `alert alert-${type} mt-2`;
+                statusMessage.textContent = message;
+                statusMessage.style.display = 'block';
+                
+                // Auto-hide success messages after 5 seconds
+                if (type === 'success') {
+                    setTimeout(() => {
+                        statusMessage.style.display = 'none';
+                    }, 5000);
+                }
+            }
+            
+            function hideStatus() {
+                statusMessage.style.display = 'none';
+            }
+            
+            function showDebug(info) {
+                debugInfo.textContent = JSON.stringify(info, null, 2);
+                debugInfo.style.display = 'block';
+            }
+            
+            function hideDebug() {
+                debugInfo.style.display = 'none';
+            }
+            
+            function loadVoices() {
+                loader.style.display = 'block';
+                
+                fetch('/voices')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! Status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        allVoices = data;
+                        filterVoices();
+                        loader.style.display = 'none';
+                    })
+                    .catch(error => {
+                        console.error('Error loading voices:', error);
+                        loader.style.display = 'none';
+                        showStatus(`خطا در بارگذاری صداها: ${error.message}`, 'danger');
+                    });
+            }
+            
+            function filterVoices() {
+                const searchTerm = voiceSearch.value.toLowerCase();
+                const selectedLanguage = languageFilter.value;
+                
+                voiceList.innerHTML = '';
+                
+                allVoices.forEach(voice => {
+                    // Skip if doesn't match language filter
+                    if (selectedLanguage !== 'all' && !voice.language.startsWith(selectedLanguage)) {
+                        return;
+                    }
+                    
+                    // Skip if doesn't match search term
+                    if (searchTerm && 
+                        !voice.name.toLowerCase().includes(searchTerm) && 
+                        !voice.language.toLowerCase().includes(searchTerm) &&
+                        !voice.display_name.toLowerCase().includes(searchTerm)) {
+                        return;
+                    }
+                    
+                    const voiceOption = document.createElement('div');
+                    voiceOption.className = 'form-check';
+                    voiceOption.innerHTML = `
+                        <input class="form-check-input" type="radio" name="voice" 
+                               id="${voice.name}" value="${voice.name}" 
+                               ${voice.name === selectedVoice ? 'checked' : ''}>
+                        <label class="form-check-label" for="${voice.name}">
+                            ${voice.display_name} (${voice.language}) ${voice.gender ? `- ${voice.gender}` : ''}
+                        </label>
+                    `;
+                    
+                    voiceOption.querySelector('input').addEventListener('change', function() {
+                        selectedVoice = this.value;
+                        voiceSearch.value = voice.display_name;
+                        document.getElementById('voiceCollapse').classList.remove('show');
+                    });
+                    
+                    voiceList.appendChild(voiceOption);
+                });
+                
+                if (voiceList.children.length === 0) {
+                    voiceList.innerHTML = '<p class="text-center">هیچ صدایی یافت نشد.</p>';
+                }
+            }
+            
+            function updateRateValue() {
+                const value = rateInput.value;
+                rateValue.textContent = `${value > 0 ? '+' : ''}${value}%`;
+            }
+            
+            function updatePitchValue() {
+                const value = pitchInput.value;
+                pitchValue.textContent = `${value > 0 ? '+' : ''}${value}Hz`;
+            }
+            
+            function convertTextToSpeech() {
+                const text = textInput.value.trim();
+                
+                if (!text) {
+                    showStatus('لطفاً متن را وارد کنید.', 'warning');
+                    return;
+                }
+                
+                convertBtn.disabled = true;
+                convertBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> در حال پردازش...';
+                showStatus('در حال تبدیل متن به گفتار...', 'info');
+                hideDebug();
+                
+                // Values will always be positive now
+                const rateValue = `${rateInput.value > 0 ? '+' : ''}${rateInput.value}%`;
+                const pitchValue = `${pitchInput.value > 0 ? '+' : ''}${pitchInput.value}Hz`;
+                
+                const requestData = {
+                    text: text,
+                    voice: selectedVoice,
+                    rate: rateValue,
+                    pitch: pitchValue
+                };
+                
+                fetch('/text-to-speech', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(data => {
+                            throw new Error(data.error || `خطای سرور: ${response.status}`);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        addAudioToHistory(data.file_url, text, data.filename);
+                        showStatus('تبدیل با موفقیت انجام شد.', 'success');
+                    } else {
+                        showStatus(`خطا در تبدیل متن به گفتار: ${data.error || 'خطای ناشناخته'}`, 'danger');
+                        showDebug(data);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showStatus(`خطا در تبدیل متن به گفتار: ${error.message}`, 'danger');
+                })
+                .finally(() => {
+                    convertBtn.disabled = false;
+                    convertBtn.innerHTML = '<i class="bi bi-soundwave"></i> تبدیل به گفتار';
+                });
+            }
+            
+            function addAudioToHistory(audioUrl, text, filename) {
+                const audioItem = document.createElement('div');
+                audioItem.className = 'audio-item';
+                
+                // Truncate text if too long
+                const displayText = text.length > 100 ? text.substring(0, 100) + '...' : text;
+                
+                audioItem.innerHTML = `
+                    <div class="audio-controls">
+                        <audio controls>
+                            <source src="${audioUrl}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="audio-text">${displayText}</div>
+                    <div class="audio-actions">
+                        <a href="/download/${filename}" class="btn btn-sm btn-outline-primary ms-2">
+                            <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                `;
+                
+                // Add to history
+                audioHistory.insertBefore(audioItem, audioHistory.firstChild);
+                
+                // Auto play the audio
+                const audio = audioItem.querySelector('audio');
+                audio.addEventListener('error', function(e) {
+                    console.error('Audio error:', e);
+                    showStatus(`خطا در پخش فایل صوتی: ${e.message || 'خطای ناشناخته'}`, 'danger');
+                });
+                
+                try {
+                    audio.play().catch(error => {
+                        console.error('Error playing audio:', error);
+                    });
+                } catch (error) {
+                    console.error('Exception playing audio:', error);
+                }
+            }
+            
+            // Clean old audio files periodically
+            setInterval(() => {
+                fetch('/clean-audio', {
+                    method: 'POST'
+                }).then(response => response.json())
+                .then(data => {
+                    console.log('Cleaned audio files:', data);
+                }).catch(error => {
+                    console.error('Error cleaning audio files:', error);
+                });
+            }, 30 * 60 * 1000); // Every 30 minutes
+        });
+    </script>
+</body>
+</html> 

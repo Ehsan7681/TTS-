@@ -1,0 +1,385 @@
+2025-06-09 19:42:59,199 - __main__ - INFO - Starting application...
+2025-06-09 19:42:59,214 - werkzeug - WARNING -  * Debugger is active!
+2025-06-09 19:42:59,217 - werkzeug - INFO -  * Debugger PIN: 130-724-038
+2025-06-09 19:43:01,637 - __main__ - INFO - Starting application...
+2025-06-09 19:43:01,650 - werkzeug - WARNING -  * Debugger is active!
+2025-06-09 19:43:01,652 - werkzeug - INFO -  * Debugger PIN: 130-724-038
+2025-06-09 19:43:10,496 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:43:10] "GET / HTTP/1.1" 200 -
+2025-06-09 19:43:11,431 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:43:11] "GET / HTTP/1.1" 200 -
+2025-06-09 19:43:13,177 - __main__ - DEBUG - Found 322 voices
+2025-06-09 19:43:13,178 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:43:13] "GET /voices HTTP/1.1" 200 -
+2025-06-09 19:43:13,935 - __main__ - DEBUG - Found 322 voices
+2025-06-09 19:43:13,937 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:43:13] "GET /voices HTTP/1.1" 200 -
+2025-06-09 19:43:14,975 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:43:14] "GET / HTTP/1.1" 200 -
+2025-06-09 19:43:17,830 - __main__ - DEBUG - Found 322 voices
+2025-06-09 19:43:17,831 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:43:17] "GET /voices HTTP/1.1" 200 -
+2025-06-09 19:43:20,062 - __main__ - ERROR - Edge-TTS failed with return code 1
+2025-06-09 19:43:20,062 - __main__ - ERROR - STDERR: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Scripts\edge-tts.exe\__main__.py", line 7, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 139, in main
+    loop.run_until_complete(amain())
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 132, in amain
+    await _run_tts(args)
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 54, in _run_tts
+    tts: Communicate = Communicate(
+                       ~~~~~~~~~~~^
+        args.text,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        pitch=args.pitch,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\communicate.py", line 284, in __init__
+    raise ValueError(f"Invalid rate '{rate}'.")
+ValueError: Invalid rate '0%'.
+
+2025-06-09 19:43:20,063 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:43:20,063 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:43:20] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:44:21,014 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:44:21] "GET / HTTP/1.1" 200 -
+2025-06-09 19:44:23,468 - __main__ - DEBUG - Found 322 voices
+2025-06-09 19:44:23,469 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:44:23] "GET /voices HTTP/1.1" 200 -
+2025-06-09 19:44:24,250 - __main__ - ERROR - Edge-TTS failed with return code 1
+2025-06-09 19:44:24,251 - __main__ - ERROR - STDERR: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Scripts\edge-tts.exe\__main__.py", line 7, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 139, in main
+    loop.run_until_complete(amain())
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 132, in amain
+    await _run_tts(args)
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 54, in _run_tts
+    tts: Communicate = Communicate(
+                       ~~~~~~~~~~~^
+        args.text,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        pitch=args.pitch,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\communicate.py", line 284, in __init__
+    raise ValueError(f"Invalid rate '{rate}'.")
+ValueError: Invalid rate '0%'.
+
+2025-06-09 19:44:24,251 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:44:24,251 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:44:24] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:45:14,086 - __main__ - ERROR - Edge-TTS failed with return code 1
+2025-06-09 19:45:14,086 - __main__ - ERROR - STDERR: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Scripts\edge-tts.exe\__main__.py", line 7, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 139, in main
+    loop.run_until_complete(amain())
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 132, in amain
+    await _run_tts(args)
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 54, in _run_tts
+    tts: Communicate = Communicate(
+                       ~~~~~~~~~~~^
+        args.text,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        pitch=args.pitch,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\communicate.py", line 284, in __init__
+    raise ValueError(f"Invalid rate '{rate}'.")
+ValueError: Invalid rate '0%'.
+
+2025-06-09 19:45:14,086 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:45:14,087 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:45:14] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:45:19,913 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:45:19] "GET / HTTP/1.1" 200 -
+2025-06-09 19:45:21,488 - __main__ - DEBUG - Found 322 voices
+2025-06-09 19:45:21,489 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:45:21] "GET /voices HTTP/1.1" 200 -
+2025-06-09 19:45:35,720 - __main__ - ERROR - Edge-TTS failed with return code 1
+2025-06-09 19:45:35,720 - __main__ - ERROR - STDERR: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Scripts\edge-tts.exe\__main__.py", line 7, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 139, in main
+    loop.run_until_complete(amain())
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 132, in amain
+    await _run_tts(args)
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 54, in _run_tts
+    tts: Communicate = Communicate(
+                       ~~~~~~~~~~~^
+        args.text,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        pitch=args.pitch,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\communicate.py", line 284, in __init__
+    raise ValueError(f"Invalid rate '{rate}'.")
+ValueError: Invalid rate '0%'.
+
+2025-06-09 19:45:35,721 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:45:35,721 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:45:35] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:49:07,908 - __main__ - INFO - Starting application...
+2025-06-09 19:49:07,922 - werkzeug - WARNING -  * Debugger is active!
+2025-06-09 19:49:07,925 - werkzeug - INFO -  * Debugger PIN: 130-724-038
+2025-06-09 19:49:35,256 - __main__ - INFO - Starting application...
+2025-06-09 19:49:35,269 - werkzeug - WARNING -  * Debugger is active!
+2025-06-09 19:49:35,271 - werkzeug - INFO -  * Debugger PIN: 130-724-038
+2025-06-09 19:49:42,571 - __main__ - INFO - Starting application...
+2025-06-09 19:49:42,583 - werkzeug - WARNING -  * Debugger is active!
+2025-06-09 19:49:42,586 - werkzeug - INFO -  * Debugger PIN: 130-724-038
+2025-06-09 19:49:54,861 - __main__ - INFO - Starting application...
+2025-06-09 19:49:54,885 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-09 19:49:54,885 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-09 19:49:54,886 - werkzeug - INFO -  * Restarting with stat
+2025-06-09 19:49:55,141 - __main__ - INFO - Starting application...
+2025-06-09 19:49:55,154 - werkzeug - WARNING -  * Debugger is active!
+2025-06-09 19:49:55,156 - werkzeug - INFO -  * Debugger PIN: 130-724-038
+2025-06-09 19:55:52,019 - werkzeug - INFO -  * Restarting with stat
+2025-06-09 19:55:52,264 - __main__ - INFO - Starting application...
+2025-06-09 19:55:52,277 - werkzeug - WARNING -  * Debugger is active!
+2025-06-09 19:55:52,280 - werkzeug - INFO -  * Debugger PIN: 130-724-038
+2025-06-09 19:55:56,952 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:55:56] "GET / HTTP/1.1" 200 -
+2025-06-09 19:55:59,474 - __main__ - DEBUG - Found 322 voices
+2025-06-09 19:55:59,475 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:55:59] "GET /voices HTTP/1.1" 200 -
+2025-06-09 19:56:01,088 - __main__ - ERROR - Edge-TTS failed with return code 1
+2025-06-09 19:56:01,088 - __main__ - ERROR - STDERR: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Scripts\edge-tts.exe\__main__.py", line 7, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 139, in main
+    loop.run_until_complete(amain())
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 132, in amain
+    await _run_tts(args)
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 54, in _run_tts
+    tts: Communicate = Communicate(
+                       ~~~~~~~~~~~^
+        args.text,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        pitch=args.pitch,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\communicate.py", line 284, in __init__
+    raise ValueError(f"Invalid rate '{rate}'.")
+ValueError: Invalid rate '0'.
+
+2025-06-09 19:56:01,089 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:56:01,089 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:56:01] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:56:13,083 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:56:13] "GET / HTTP/1.1" 200 -
+2025-06-09 19:56:14,753 - __main__ - DEBUG - Found 322 voices
+2025-06-09 19:56:14,754 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:56:14] "GET /voices HTTP/1.1" 200 -
+2025-06-09 19:56:41,435 - __main__ - ERROR - Edge-TTS failed with return code 1
+2025-06-09 19:56:41,435 - __main__ - ERROR - STDERR: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Scripts\edge-tts.exe\__main__.py", line 7, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 139, in main
+    loop.run_until_complete(amain())
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 132, in amain
+    await _run_tts(args)
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 54, in _run_tts
+    tts: Communicate = Communicate(
+                       ~~~~~~~~~~~^
+        args.text,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        pitch=args.pitch,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\communicate.py", line 284, in __init__
+    raise ValueError(f"Invalid rate '{rate}'.")
+ValueError: Invalid rate '0'.
+
+2025-06-09 19:56:41,435 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:56:41,436 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:56:41] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:57:07,501 - __main__ - ERROR - Edge-TTS failed with return code 2
+2025-06-09 19:57:07,501 - __main__ - ERROR - STDERR: usage: edge-tts [-h] [-t TEXT] [-f FILE] [-v VOICE] [-l] [--rate RATE]
+                [--volume VOLUME] [--pitch PITCH]
+                [--words-in-cue WORDS_IN_CUE] [--write-media WRITE_MEDIA]
+                [--write-subtitles WRITE_SUBTITLES] [--proxy PROXY]
+edge-tts: error: argument --rate: expected one argument
+
+2025-06-09 19:57:07,501 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:57:07,502 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:57:07] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:57:12,536 - __main__ - ERROR - Edge-TTS failed with return code 2
+2025-06-09 19:57:12,536 - __main__ - ERROR - STDERR: usage: edge-tts [-h] [-t TEXT] [-f FILE] [-v VOICE] [-l] [--rate RATE]
+                [--volume VOLUME] [--pitch PITCH]
+                [--words-in-cue WORDS_IN_CUE] [--write-media WRITE_MEDIA]
+                [--write-subtitles WRITE_SUBTITLES] [--proxy PROXY]
+edge-tts: error: argument --rate: expected one argument
+
+2025-06-09 19:57:12,536 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:57:12,537 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:57:12] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:57:15,068 - __main__ - ERROR - Edge-TTS failed with return code 2
+2025-06-09 19:57:15,068 - __main__ - ERROR - STDERR: usage: edge-tts [-h] [-t TEXT] [-f FILE] [-v VOICE] [-l] [--rate RATE]
+                [--volume VOLUME] [--pitch PITCH]
+                [--words-in-cue WORDS_IN_CUE] [--write-media WRITE_MEDIA]
+                [--write-subtitles WRITE_SUBTITLES] [--proxy PROXY]
+edge-tts: error: argument --rate: expected one argument
+
+2025-06-09 19:57:15,068 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:57:15,069 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:57:15] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:57:17,809 - __main__ - ERROR - Edge-TTS failed with return code 2
+2025-06-09 19:57:17,809 - __main__ - ERROR - STDERR: usage: edge-tts [-h] [-t TEXT] [-f FILE] [-v VOICE] [-l] [--rate RATE]
+                [--volume VOLUME] [--pitch PITCH]
+                [--words-in-cue WORDS_IN_CUE] [--write-media WRITE_MEDIA]
+                [--write-subtitles WRITE_SUBTITLES] [--proxy PROXY]
+edge-tts: error: argument --rate: expected one argument
+
+2025-06-09 19:57:17,810 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:57:17,810 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:57:17] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:57:21,865 - __main__ - ERROR - Edge-TTS failed with return code 2
+2025-06-09 19:57:21,865 - __main__ - ERROR - STDERR: usage: edge-tts [-h] [-t TEXT] [-f FILE] [-v VOICE] [-l] [--rate RATE]
+                [--volume VOLUME] [--pitch PITCH]
+                [--words-in-cue WORDS_IN_CUE] [--write-media WRITE_MEDIA]
+                [--write-subtitles WRITE_SUBTITLES] [--proxy PROXY]
+edge-tts: error: argument --rate: expected one argument
+
+2025-06-09 19:57:21,865 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:57:21,865 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:57:21] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:57:26,184 - __main__ - ERROR - Edge-TTS failed with return code 2
+2025-06-09 19:57:26,184 - __main__ - ERROR - STDERR: usage: edge-tts [-h] [-t TEXT] [-f FILE] [-v VOICE] [-l] [--rate RATE]
+                [--volume VOLUME] [--pitch PITCH]
+                [--words-in-cue WORDS_IN_CUE] [--write-media WRITE_MEDIA]
+                [--write-subtitles WRITE_SUBTITLES] [--proxy PROXY]
+edge-tts: error: argument --rate: expected one argument
+
+2025-06-09 19:57:26,184 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:57:26,184 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:57:26] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:57:29,073 - __main__ - ERROR - Edge-TTS failed with return code 2
+2025-06-09 19:57:29,074 - __main__ - ERROR - STDERR: usage: edge-tts [-h] [-t TEXT] [-f FILE] [-v VOICE] [-l] [--rate RATE]
+                [--volume VOLUME] [--pitch PITCH]
+                [--words-in-cue WORDS_IN_CUE] [--write-media WRITE_MEDIA]
+                [--write-subtitles WRITE_SUBTITLES] [--proxy PROXY]
+edge-tts: error: argument --rate: expected one argument
+
+2025-06-09 19:57:29,074 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:57:29,074 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:57:29] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:57:34,060 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:57:34] "POST /text-to-speech HTTP/1.1" 200 -
+2025-06-09 19:57:34,176 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:57:34] "[35m[1mGET /static/audio/135c3c39-099c-4b90-bd38-379a12563d39.mp3 HTTP/1.1[0m" 206 -
+2025-06-09 19:57:46,222 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:57:46] "POST /text-to-speech HTTP/1.1" 200 -
+2025-06-09 19:57:46,250 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:57:46] "[35m[1mGET /static/audio/b97e8de2-e225-4257-a576-c6e8d6b9bd48.mp3 HTTP/1.1[0m" 206 -
+2025-06-09 19:57:57,820 - __main__ - ERROR - Edge-TTS failed with return code 1
+2025-06-09 19:57:57,820 - __main__ - ERROR - STDERR: Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Scripts\edge-tts.exe\__main__.py", line 7, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 139, in main
+    loop.run_until_complete(amain())
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 132, in amain
+    await _run_tts(args)
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\util.py", line 54, in _run_tts
+    tts: Communicate = Communicate(
+                       ~~~~~~~~~~~^
+        args.text,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        pitch=args.pitch,
+        ^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\VICTUS\AppData\Local\Programs\Python\Python313\Lib\site-packages\edge_tts\communicate.py", line 284, in __init__
+    raise ValueError(f"Invalid rate '{rate}'.")
+ValueError: Invalid rate '0'.
+
+2025-06-09 19:57:57,821 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:57:57,821 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:57:57] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:58:02,918 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:58:02] "POST /text-to-speech HTTP/1.1" 200 -
+2025-06-09 19:58:02,943 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:58:02] "[35m[1mGET /static/audio/2e0db774-f563-4c4f-9619-365324ae7321.mp3 HTTP/1.1[0m" 206 -
+2025-06-09 19:58:35,809 - __main__ - ERROR - Edge-TTS failed with return code 2
+2025-06-09 19:58:35,809 - __main__ - ERROR - STDERR: usage: edge-tts [-h] [-t TEXT] [-f FILE] [-v VOICE] [-l] [--rate RATE]
+                [--volume VOLUME] [--pitch PITCH]
+                [--words-in-cue WORDS_IN_CUE] [--write-media WRITE_MEDIA]
+                [--write-subtitles WRITE_SUBTITLES] [--proxy PROXY]
+edge-tts: error: argument --pitch: expected one argument
+
+2025-06-09 19:58:35,810 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:58:35,810 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:58:35] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:58:40,995 - __main__ - ERROR - Edge-TTS failed with return code 2
+2025-06-09 19:58:40,996 - __main__ - ERROR - STDERR: usage: edge-tts [-h] [-t TEXT] [-f FILE] [-v VOICE] [-l] [--rate RATE]
+                [--volume VOLUME] [--pitch PITCH]
+                [--words-in-cue WORDS_IN_CUE] [--write-media WRITE_MEDIA]
+                [--write-subtitles WRITE_SUBTITLES] [--proxy PROXY]
+edge-tts: error: argument --pitch: expected one argument
+
+2025-06-09 19:58:40,996 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:58:40,996 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:58:40] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:58:43,570 - __main__ - ERROR - Edge-TTS failed with return code 2
+2025-06-09 19:58:43,570 - __main__ - ERROR - STDERR: usage: edge-tts [-h] [-t TEXT] [-f FILE] [-v VOICE] [-l] [--rate RATE]
+                [--volume VOLUME] [--pitch PITCH]
+                [--words-in-cue WORDS_IN_CUE] [--write-media WRITE_MEDIA]
+                [--write-subtitles WRITE_SUBTITLES] [--proxy PROXY]
+edge-tts: error: argument --pitch: expected one argument
+
+2025-06-09 19:58:43,570 - __main__ - ERROR - STDOUT: 
+2025-06-09 19:58:43,571 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:58:43] "[35m[1mPOST /text-to-speech HTTP/1.1[0m" 500 -
+2025-06-09 19:58:49,168 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:58:49] "POST /text-to-speech HTTP/1.1" 200 -
+2025-06-09 19:58:49,193 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:58:49] "[35m[1mGET /static/audio/417f0653-7d5c-489e-8533-6ee72037b275.mp3 HTTP/1.1[0m" 206 -
+2025-06-09 19:59:22,392 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:59:22] "POST /text-to-speech HTTP/1.1" 200 -
+2025-06-09 19:59:22,418 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 19:59:22] "[35m[1mGET /static/audio/3d21eb49-0e2f-4bf1-9704-4954e1d8c72c.mp3 HTTP/1.1[0m" 206 -
+2025-06-09 20:01:15,203 - werkzeug - INFO -  * Restarting with stat
+2025-06-09 20:01:15,427 - __main__ - INFO - Starting application...
+2025-06-09 20:01:15,444 - werkzeug - WARNING -  * Debugger is active!
+2025-06-09 20:01:15,447 - werkzeug - INFO -  * Debugger PIN: 130-724-038
+2025-06-09 20:01:16,505 - werkzeug - INFO -  * Restarting with stat
+2025-06-09 20:01:16,740 - __main__ - INFO - Starting application...
+2025-06-09 20:01:16,761 - werkzeug - WARNING -  * Debugger is active!
+2025-06-09 20:01:16,765 - werkzeug - INFO -  * Debugger PIN: 130-724-038
+2025-06-09 20:01:28,552 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 20:01:28] "GET / HTTP/1.1" 200 -
+2025-06-09 20:01:30,504 - __main__ - DEBUG - Found 322 voices
+2025-06-09 20:01:30,505 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 20:01:30] "GET /voices HTTP/1.1" 200 -
+2025-06-09 20:01:49,621 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 20:01:49] "POST /text-to-speech HTTP/1.1" 200 -
+2025-06-09 20:01:49,695 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 20:01:49] "[35m[1mGET /static/audio/a33148b3-1050-43ea-9524-7412bcf0c0a2.mp3 HTTP/1.1[0m" 206 -
+2025-06-09 20:01:50,012 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 20:01:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-09 20:02:05,849 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 20:02:05] "POST /text-to-speech HTTP/1.1" 200 -
+2025-06-09 20:02:05,871 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 20:02:05] "[35m[1mGET /static/audio/d5ed1ad8-8c23-4445-a7eb-cca56429bf9e.mp3 HTTP/1.1[0m" 206 -
+2025-06-09 20:02:27,983 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 20:02:27] "POST /text-to-speech HTTP/1.1" 200 -
+2025-06-09 20:02:28,006 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 20:02:28] "[35m[1mGET /static/audio/9256fc21-9604-4626-b15f-5ea276bd1d91.mp3 HTTP/1.1[0m" 206 -
+2025-06-09 20:02:37,332 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 20:02:37] "POST /text-to-speech HTTP/1.1" 200 -
+2025-06-09 20:02:37,354 - werkzeug - INFO - 127.0.0.1 - - [09/Jun/2025 20:02:37] "[35m[1mGET /static/audio/4b10ec30-a30e-40db-a742-5dd49c35d123.mp3 HTTP/1.1[0m" 206 -
